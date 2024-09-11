@@ -1,0 +1,22 @@
+/* *{
+    border: 1px solid red;
+} */
+
+.bg3{
+    background-image: url("../../../assets/images/bg3.webp");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 1rem;
+
+}
+
+@media screen and (max-width: 1024px) {
+  .bg {
+    background-image: url("../../../assets/images/bg.webp");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 1rem;
+  }
+}

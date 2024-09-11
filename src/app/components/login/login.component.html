@@ -1,0 +1,118 @@
+<main class="px-4 pt-4 pb-12 md:px-16 md:pb-20 md:pt-0">
+  <div
+    class="max-w-xl mx-auto rounded-2xl bg-white shadow-lg py-6 px-4 md:py-8 md:px-10 flex flex-col gap-8"
+  >
+    <img class="w-8 md:w-10" src="assets/images/icon.svg" alt="CropCare logo" />
+    <div>
+      <h1
+        class="text-2xl md:text-3xl lg:text-4xl text-dark font-semibold mb-2 md:mb-4"
+      >
+        Login
+      </h1>
+      <p class="md:text-lg text-gray-dark">
+        See your growth and manage your farm! <br />
+        Don't have an account?
+        <a
+          class="font-semibold text-accent cursor-pointer hover:underline"
+          routerLink="/register"
+          >Sign up</a
+        >.
+      </p>
+    </div>
+
+    <div>
+      <p class="md:text-lg text-gray-dark mb-2">
+        Email<span class="text-accent">*</span>
+      </p>
+      <input
+        type="email"
+        class="w-full border border-[2px] border-light px-4 py-4 rounded-xl shadow border-gray-dark focus:outline-none focus:border-primary"
+        placeholder="Enter your email"
+        required
+        (input)="validateEmail()"
+        [formControl]="emailControl"
+      />
+
+      <p class="md:text-lg text-gray-dark mt-4 md:mt-4 mb-2">
+        Password<span class="text-accent">*</span>
+      </p>
+      <div class="relative">
+        <input
+          #pass
+          type="password"
+          class="w-full border border-[2px] border-light px-4 py-4 rounded-xl shadow border-gray-dark focus:outline-none focus:border-primary"
+          placeholder="Enter your password"
+          required
+          minlength="8"
+          (input)="validatePassword()"
+          [formControl]="passwordControl"
+        />
+        <button
+          class="absolute top-1/2 -translate-y-1/2 right-4"
+          (click)="togglePasswordVisibility()"
+        >
+          @if (showPassword) {
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            version="1.1"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+            width="512"
+            height="512"
+            x="0"
+            y="0"
+            viewBox="0 0 48 48"
+            style="enable-background: new 0 0 512 512"
+            xml:space="preserve"
+            class="w-6 h-6 text-gray"
+          >
+            <g>
+              <path
+                d="M19.356 13.72c1.578-.515 3.14-.776 4.644-.776 8.531 0 16.04 8.296 18.303 11.057a41.695 41.695 0 0 1-4.247 4.46 1.501 1.501 0 0 0 2.012 2.226c3.273-2.959 5.271-5.692 5.355-5.807a1.5 1.5 0 0 0 0-1.763C45.032 22.581 35.72 9.944 24 9.944c-1.82 0-3.695.311-5.574.924a1.498 1.498 0 0 0-.96 1.891 1.497 1.497 0 0 0 1.89.961zM4.777 4a1.5 1.5 0 0 0-1.971 2.262l9.087 7.919c-5.52 3.772-9.151 8.712-9.315 8.938a1.503 1.503 0 0 0 0 1.763c.39.537 9.702 13.174 21.422 13.174 3.62 0 7.366-1.225 11.145-3.612l8.078 7.04a1.496 1.496 0 0 0 2.116-.146 1.5 1.5 0 0 0-.146-2.116zm15.252 17.27 6.732 5.867a4.58 4.58 0 0 1-2.761.938 4.581 4.581 0 0 1-4.575-4.575c0-.8.223-1.555.604-2.23zM24 35.056c-8.531 0-16.039-8.295-18.302-11.057 1.326-1.621 4.467-5.135 8.548-7.768l3.476 3.03a7.504 7.504 0 0 0-1.298 4.239c0 4.177 3.398 7.575 7.575 7.575 1.879 0 3.674-.71 5.051-1.942l3.727 3.248c-3.022 1.771-5.969 2.675-8.777 2.675z"
+                fill="currentColor"
+                opacity="1"
+                data-original="#000000"
+              ></path>
+            </g>
+          </svg>
+          } @else {
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            version="1.1"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+            width="512"
+            height="512"
+            x="0"
+            y="0"
+            class="w-6 h-6 text-gray"
+            viewBox="0 0 48 48"
+            style="enable-background: new 0 0 512 512"
+            xml:space="preserve"
+          >
+            <g>
+              <path
+                d="M45.423 23.119C45.032 22.581 35.72 9.944 24 9.944S2.968 22.58 2.578 23.118a1.503 1.503 0 0 0 0 1.763c.39.538 9.702 13.175 21.422 13.175s21.032-12.637 21.423-13.174a1.5 1.5 0 0 0 0-1.763zM24 35.056c-8.53 0-16.038-8.294-18.301-11.056C7.962 21.238 15.47 12.944 24 12.944S40.038 21.238 42.302 24C40.038 26.762 32.53 35.056 24 35.056zm4.221-16.174a1.501 1.501 0 0 0-.413 2.081c.502.751.768 1.629.768 2.538 0 2.522-2.053 4.575-4.575 4.575s-4.575-2.053-4.575-4.575 2.052-4.575 4.575-4.575a1.5 1.5 0 1 0 0-3c-4.177 0-7.575 3.398-7.575 7.575s3.398 7.575 7.575 7.575 7.575-3.398 7.575-7.575c0-1.504-.44-2.958-1.273-4.205a1.5 1.5 0 0 0-2.082-.414z"
+                fill="currentColor"
+                opacity="1"
+                data-original="#000000"
+              ></path>
+            </g>
+          </svg>
+          }
+        </button>
+      </div>
+    </div>
+    <button
+      class="bg-primary text-dark font-semibold text-lg md:text-xl px-8 py-3 md:px-12 rounded-full hover:bg-dark hover:text-tertiary transition duration-300 ease-in-out"
+      (click)="login()"
+      [disabled]="isLoading"
+      [ngClass]="{
+        'opacity-50 hover:bg-primary hover:text-dark cursor-wait': isLoading
+      }"
+    >
+      Login
+    </button>
+    @if (snack) {
+    <p class="text-red-500 text-center text-sm text-gray-dark">{{ snack }}</p>
+    }
+  </div>
+</main>

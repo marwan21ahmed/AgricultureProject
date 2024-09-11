@@ -1,0 +1,126 @@
+<main class="md:p-6 p-4 bg-white shadow-lg rounded-2xl">
+  <section class="w-full mb-4 lg:mb-8">
+    <h1 class="text-dark text-2xl md:text-3xl lg:text-4xl font-semibold">
+      Water Dashboard
+    </h1>
+    <p
+      class="text-gray-dark text-sm md:text-base lg:text-lg mt-2 max-w-lg text-balance"
+    >
+      Effortlessly Monitor, Control, and Optimize Water Usage with Real-time
+      Sensor Data and Pump Control.
+    </p>
+  </section>
+
+  <section>
+    <div class="container mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6">
+        <div class="bg-light relative p-6 rounded-xl">
+          <h2
+            class="text-2xl text-center md:text-start md:text-3xl font-semibold"
+          >
+            Water Pump
+          </h2>
+          <div
+            class="my-8 flex items-center mx-auto justify-center rounded-full p-8 w-28 h-28 md:w-36 md:h-36 cursor-pointer transition duration-300 ease-in-out hover:ring-4 hover:ring-accent"
+            [ngClass]="{
+              'bg-primary text-secondary': isPumpOn,
+              'bg-gray text-dark': !isPumpOn
+            }"
+            (click)="togglePump()"
+          >
+            <p class="text-3xl font-bold">
+              {{ isPumpOn ? "ON" : "OFF" }}
+            </p>
+          </div>
+          <img src="assets/images/wave.svg" alt="wave icon" />
+        </div>
+        <div class="bg-light p-6 rounded-xl">
+          <h2
+            class="text-2xl text-center md:text-start md:text-3xl font-semibold"
+          >
+            Water Flow Rate
+          </h2>
+
+          <div
+            class="my-8 bg-dark text-light flex items-center mx-auto justify-center rounded-full p-8 w-28 h-28 md:w-36 md:h-36 transition duration-300 ease-in-out"
+          >
+            <p class="text-3xl text-center font-bold">
+              {{ flowRate }} <br />
+              <span class="text-sm font-medium text-gray">L/min</span>
+            </p>
+          </div>
+          <input
+            type="range"
+            min="0"
+            max="10"
+            class="range appearance-none h-3 md:h-4 rounded-lg overflow-hidden"
+            step="1"
+            [formControl]="flowRateControl"
+            (change)="setFlowRate(flowRateControl.value || 0)"
+            [style.background]="
+              'linear-gradient(to right, #bff466 0%, #bff466 calc((' +
+              flowRateControl.value +
+              ' / ' +
+              10 +
+              ') * 100%), #c0c4c3 calc((' +
+              flowRateControl.value +
+              ' / ' +
+              10 +
+              ') * 100%), #c0c4c3 100%)'
+            "
+          />
+        </div>
+      </div>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-6 mt-4">
+        <div class="bg-tertiary p-4 md:p-6 rounded-xl">
+          <h3 class="text-center text-lg md:text-2xl font-semibold">
+            Humidity
+          </h3>
+          <div
+            class="flex items-center justify-center rounded-full p-8 w-28 h-28 md:w-36 md:h-36 bg-light mx-auto my-4 md:my-8 text-dark transition duration-300 ease-in-out"
+          >
+            <p class="text-lg md:text-3xl font-bold">
+              {{ humidity }} <span class="font-light">%</span>
+            </p>
+          </div>
+        </div>
+        <div class="bg-tertiary p-4 md:p-6 rounded-xl">
+          <h3 class="text-center text-lg md:text-2xl font-semibold">
+            Temperature
+          </h3>
+          <div
+            class="flex items-center justify-center rounded-full p-8 w-28 h-28 md:w-36 md:h-36 bg-light mx-auto my-4 md:my-8 text-dark transition duration-300 ease-in-out"
+          >
+            <p class="text-lg md:text-3xl font-bold">
+              {{ temperature }} <span class="font-light">°C</span>
+            </p>
+          </div>
+        </div>
+        <div class="bg-tertiary p-4 md:p-6 rounded-xl">
+          <h3 class="text-center text-lg md:text-2xl font-semibold">
+            RainFall
+          </h3>
+          <div
+            class="flex items-center justify-center rounded-full p-8 w-28 h-28 md:w-36 md:h-36 bg-light mx-auto my-4 md:my-8 text-dark transition duration-300 ease-in-out"
+          >
+            <p class="text-lg md:text-3xl font-bold">
+              {{ rainFall }}<span class="text-sm font-medium">in</span>
+            </p>
+          </div>
+        </div>
+        <div class="bg-tertiary p-4 md:p-6 rounded-xl">
+          <h3 class="text-center text-lg md:text-2xl font-semibold">
+            Soil Moisture
+          </h3>
+          <div
+            class="flex items-center justify-center rounded-full p-8 w-28 h-28 md:w-36 md:h-36 bg-light mx-auto my-4 md:my-8 text-dark transition duration-300 ease-in-out"
+          >
+            <p class="text-lg md:text-3xl font-bold">
+              {{ soilMoisture }} <span class="font-light">%</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
